@@ -9,6 +9,7 @@ services:
     plan: free  # or starter, standard, etc.
     buildCommand: ./build.sh
     startCommand: gunicorn soulconnect.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --threads 2 --worker-class gthread
+    healthCheckPath: /health/
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.7

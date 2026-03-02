@@ -8,8 +8,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from .views import health_check
 
 urlpatterns = [
+    # Health Check (for cron jobs / load balancers)
+    path('health/', health_check, name='health_check'),
+
     # Django Admin
     path('admin/', admin.site.urls),
 
